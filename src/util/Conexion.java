@@ -10,11 +10,20 @@ import javax.persistence.TypedQuery;
 import entities.Contacto;
 
 public class Conexion<T> {
-	
-	public static EntityManager em = null;
+	private Class<T> c;
+	private static EntityManager em = null;
 	
 	public Conexion() {
 		em = this.getEm();
+	}
+	
+	public Conexion(Class<T> c) {
+		em = this.getEm();
+		this.c = c;
+	}
+	
+	public void setC(Class<T> c){
+		this.c = c;
 	}
 	
 	public static EntityManager getEm(){
@@ -25,12 +34,12 @@ public class Conexion<T> {
 		return em;
 	}
 	
-	public <E> T find(Class<T> c, E id){
+	public <E> T find(E id){
 		T object = (T) em.find(c, id);
 		return object;
 	}
 	
-	public List<T> list(Class<T> c){
+	public List<T> list(){
 		TypedQuery<T> consulta= em.createNamedQuery(c.getSimpleName()+".findAll", c);
 		List<T> lista = (List<T>) consulta.getResultList();
 		return lista;

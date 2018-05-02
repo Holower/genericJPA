@@ -15,18 +15,19 @@ public class ContactoDaoImpl implements ContactoDao {
 	
 	public ContactoDaoImpl(){
 		con = new Conexion();
+		con.setC(Contacto.class);
 	}
 
 	@Override
 	public Contacto selectById(Integer id) {
-		Contacto c = (Contacto) con.find(Contacto.class, id);		
+		Contacto c = (Contacto) con.find(id);		
 		return c;
 	}
 
 	@Override
 	public List<Contacto> selectAll() {
 		
-		List<Contacto> contactos = con.list(Contacto.class);
+		List<Contacto> contactos = con.list();
 
 		return contactos;
 	}

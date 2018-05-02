@@ -36,7 +36,7 @@ public class Prueba {
 		*/
 		UsuarioDao uDao = new UsuarioDao();
 		//uDao.insert(u);
-		u = uDao.find(Usuario.class, "crangarita");
+		u = uDao.find("crangarita");
 		System.out.println("Email: " + d.getEmail());
 
 		/*

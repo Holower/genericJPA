@@ -7,4 +7,8 @@ public class CampanaDao
 	extends Conexion<Campana> 
 	implements GenericDao<Campana>{
 
+	public CampanaDao() {
+		super(Campana.class);
+	}
+	
 }
